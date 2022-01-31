@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bayes’s theorem &#8212; Bayesian Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bayesian Inference" href="Bayesian%20Inference.html" />
+    <link rel="prev" title="Distribution Manipulation Functions in Python" href="Distribution%20Manipulation%20Function%20in%20Python.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Bayesian Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction.html">
+   <!-- #raw -->
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Statistic Bayesian 001
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../Basics%20in%20Statistic%20Bayesian.html">
+   Basics in Statistic Bayesian
+   <a class="anchor" id="chapter1">
+   </a>
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Review%20more%20common%20discrete%20and%20continuous%20distributions.html">
+     Discrete and continuous Distributions
+     <a class="anchor" id="distributions">
+     </a>
+    </a>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Distribution%20Manipulation%20Function%20in%20Python.html">
+       Distribution Manipulation Functions in Python
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Bayes’s theorem
+     <a class="anchor" id="bayes">
+     </a>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Bayesian%20Inference.html">
+     Bayesian Inference
+     <a class="anchor" id="guideBayesian">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prio and Posterior
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../BinomialPriorPosterior.html">
+   Prios and Posterior : The binomial case
+   <a class="anchor" id="chapter binomial prior">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../OtherPriorPosterior.html">
+   Other Prior and Posterior models
+   <a class="anchor" id="chapter4">
+   </a>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practice in Adevinta
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Examples%20in%20Adevinta.html">
+   Examples in Adevinta
+   <a class="anchor" id="chapter5">
+   </a>
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapt1/Review Bayesian Theorem.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapt1/Review Bayesian Theorem.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapt1/Review Bayesian Theorem.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapt1/Review Bayesian Theorem.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#likelihood-function">
+   Likelihood function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maximum-likelihood-estimation">
+   Maximum Likelihood estimation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-coin-frequentist-versus-bayesian-approaches">
+   Example Coin: Frequentist versus Bayesian approaches
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#frequentist-approach">
+     Frequentist approach
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayesian-approach">
+     Bayesian approach
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bayes-s-theorem-a-class-anchor-id-bayes-a">
+<h1>Bayes’s theorem  <a class="anchor" id="bayes"></a><a class="headerlink" href="#bayes-s-theorem-a-class-anchor-id-bayes-a" title="Permalink to this headline">¶</a></h1>
+<p>Bayes’ theorem is stated mathematically as the following equation:</p>
+<div class="math notranslate nohighlight">
+\[ \textrm{P(A|B)} = \frac{\textrm{P(B|A) P(A)}}{\textrm{P(B)}} =\frac{\textrm{P(B|A) P(A)} }{\textrm{P(B|A) P(A) +P(B|A}^c\textrm{) P(A}^c) }  \tag{1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P(B)&gt;0\)</span> and also.</p>
+<p>The simplification of eq.1 no taking account factor parameters</p>
+<div class="math notranslate nohighlight">
+\[ 	 \underbrace{\textrm{P(A|B)}}_{posterior} \; \alpha  \; \underbrace{\textrm{P(B|A)}}_{likelihood} \cdot \underbrace{\textrm{P(A)}}_{prior} \]</div>
+<blockquote>
+<div><p>Note:  <span class="math notranslate nohighlight">\(P(B) = \textrm{P(B|A) P(A) +P(B|A}^c\textrm{) P(A}^c)\)</span></p>
+</div></blockquote>
+<div class="section" id="likelihood-function">
+<h2>Likelihood function<a class="headerlink" href="#likelihood-function" title="Permalink to this headline">¶</a></h2>
+<p>The likelihood function (often simply called the likelihood) measures the goodness of fit
+of a statistical model to a sample of data for given values of the unknown parameters.</p>
+<p>It is formed from the joint probability distribution of the sample,
+but viewed and used as a function of the parameters only, thus treating the random
+variables as fixed at the observed values</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>In an hospital there are 400 patients affected by heart attacks of which 72 died after 1 month and 328 were released. What is the mortality rate?</p>
+<p>We can say: each patient come from a Bernoulli distribution: <span class="math notranslate nohighlight">\(Y_i\sim  B(\theta) \Rightarrow P(Y_i =1) = \theta\)</span>. The Bernoulli distribution is controlled by the parameter <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<p>The probability density function for all set is
+$<span class="math notranslate nohighlight">\(
+P(Y =y|\theta)=P(Y_1 =y_1, ... ,Y_n =y_n |\theta) = \textrm{are independent } = 
+P(Y_1 =y_1 |\theta) .. P(Y_n =y_n |\theta) =  \prod_{i=1}^{n} P( y_i |\theta) =\prod_{i=1}^{n} \theta^{y_i} (1-\theta)^{1-y_i}
+\)</span>$</p>
+<p>If we think in terms of <span class="math notranslate nohighlight">\(\theta\)</span> given y, the likelihood function is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{L} (\theta | y) = \prod_{i=1}^{n} \theta^{y_i} (1-\theta)^{1-y_i}
+\]</div>
+</div>
+<blockquote>
+<div><p>Warning: Likelihood is not a probability function!</p>
+</div></blockquote>
+</div>
+<div class="section" id="maximum-likelihood-estimation">
+<h2>Maximum Likelihood estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permalink to this headline">¶</a></h2>
+<p>Maximum likelihood estimation (MLE) is a method of estimating the parameters of a probability distribution
+by maximizing a likelihood function, so that under the assumed statistical model the observed data is most probable.</p>
+<div class="admonition-example-1 admonition">
+<p class="admonition-title">Example 1</p>
+<p>Maximum Likelihood Estimator <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(\hat{\theta} = \textrm{argmax} \mathbb{L}(\theta|\hat{y_i})\)</span></p>
+<p>Let’s move to log:</p>
+<div class="math notranslate nohighlight">
+\[l(\theta)= \textrm{log} \, \mathbb{L}(\theta|\hat{y_i}) \Rightarrow\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}l(\theta)= \textrm{log} \prod_{i=1}^{n} \theta^{y_i} (1-\theta)^{1-y_i} =
+\sum \textrm{log} \theta^{y_i} (1-\theta)^{1-^{y_i}} = \sum \left[ y_i \textrm{log} \theta + (1-y_i) \, \textrm{log}(1-\theta) \right] =\\\left( \sum  y_i \right) \textrm{log} \theta +   \left(\sum 1-y_i \right) \, \textrm{log}(1-\theta)  
+\end{aligned}\end{align} \]</div>
+<p>Maximizing:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d l}{d \theta} =0 \Rightarrow \frac{1}{\theta} \sum y_i - \frac{1}{1- \theta} \sum (1-y_i)=0 \]</div>
+<div class="math notranslate nohighlight">
+\[ \hat{\theta} = \frac{\sum y_i}{n} \]</div>
+<p>This is the value of <span class="math notranslate nohighlight">\(\theta\)</span> that maximizes the likelihood for the bernoulli distribution.</p>
+<blockquote>
+<div><p>In our precedent example <span class="math notranslate nohighlight">\( \hat{p} = \frac{72}{400}=0.18\)</span></p>
+</div></blockquote>
+</div>
+<div class="admonition-mle-exponential-distribution admonition">
+<p class="admonition-title">MLE Exponential distribution</p>
+<p><span class="math notranslate nohighlight">\(X \sim Exp(\lambda) \Rightarrow\)</span> the density function for independent events</p>
+<div class="math notranslate nohighlight">
+\[
+f(X| \lambda) = \prod_{i=1}^{n} \lambda e^{-\lambda x_i} = \lambda^n  e^{-\lambda \sum x_i}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{L} (\lambda | x) = \lambda^n  e^{-\lambda \sum x_i}
+\]</div>
+<p>Let’s do the logaritm:</p>
+<div class="math notranslate nohighlight">
+\[
+l(\lambda)=\textrm{n log} (\lambda) - \lambda \sum x_i
+\]</div>
+<p>Doing the derivate:</p>
+<div class="math notranslate nohighlight">
+\[ l^{'}(\lambda)=\frac{n}{\lambda} -  \sum x_i=0 \Rightarrow\]</div>
+<p>The MLE is</p>
+<div class="math notranslate nohighlight">
+\[ \hat{\lambda}=\frac{n}{\sum x_i}= \frac{1}{x}\]</div>
+<p>which corresponds to the inverse of the mean of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</div>
+<div class="admonition-uniform-distribution admonition">
+<p class="admonition-title">Uniform distribution</p>
+<p><span class="math notranslate nohighlight">\(X_i \sim U[0,\theta] \Rightarrow\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+f(X| \theta) = \prod_{i=1}^{n} \frac{1}{\theta} I_{\{ 0 \leq x_i \leq \theta \} } 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{L} (\theta | x) = \theta^{-n}  I_{\{ 0 \leq min x_i \leq max x_i \leq \theta \} } 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+l^{'} (\theta ) = -n \theta^{-(n+1)}  I_{\{ 0 \leq min x_i \leq max x_i \leq \theta \} } 
+\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{\theta}=max x_i \]</div>
+</div>
+</div>
+<div class="section" id="example-coin-frequentist-versus-bayesian-approaches">
+<h2>Example Coin: Frequentist versus Bayesian approaches<a class="headerlink" href="#example-coin-frequentist-versus-bayesian-approaches" title="Permalink to this headline">¶</a></h2>
+<p>We launch a coin, that is supposed to give 70% of time heads.
+Now you launch it 5 times and you obtain 2 heads. Is it fair or unfair coin?</p>
+<div class="section" id="frequentist-approach">
+<h3>Frequentist approach<a class="headerlink" href="#frequentist-approach" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(\theta = \{ \textrm{fair, loaded} \} \)</span></p>
+<p><span class="math notranslate nohighlight">\(X \sim Bin(5,?), \\ f(X|\theta) \Rightarrow\)</span></p>
+<div class="math notranslate nohighlight">
+\[\binom{5}{x} (0.5)^5  \tag{if $\theta$ is fair} \]</div>
+<div class="math notranslate nohighlight">
+\[\binom{5}{x} (0.7)^x \, (0.3)^{5-x} \tag{if $\theta$ is loaded} \]</div>
+<div class="math notranslate nohighlight">
+\[\Rightarrow  \binom{5}{x} (0.5)^5  I_{  \{ \theta = \textrm{fair}  \} }  +\binom{5}{x} (0.7)^x \, (0.3)^{5-x} I_{ \{ \theta = \textrm{loaded}  \} }\]</div>
+<p>If we put X =2, we have 2 observed tails <span class="math notranslate nohighlight">\(f(\theta|X=2) \Rightarrow\)</span></p>
+<div class="math notranslate nohighlight">
+\[ 0.3125  \tag{if $\theta$ is fair} \]</div>
+<div class="math notranslate nohighlight">
+\[ 0.1323 \tag{if $\theta$ is loaded} \]</div>
+<p>Note that the previous values are the value for the parameter <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> in the two scenarios <span class="math notranslate nohighlight">\(\theta\)</span> is fair or <span class="math notranslate nohighlight">\(\theta\)</span> is loaded: those are scalar point estimates! No info here about the probability that <span class="math notranslate nohighlight">\(\theta\)</span> is fair or loaded, just his value. From those values, we obtain which one maximize the likelihood.</p>
+<p>MLE is obtained with <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> is fair.
+The answer to the previous question is that given the current data, is most likely that the coin is fair. But how sure are we? This is not easy to answer with the frequentistic approach to the question <span class="math notranslate nohighlight">\(P(\theta =fair|X=2)=?\)</span> or in other words, what is the probability that <span class="math notranslate nohighlight">\(\theta\)</span> is fair given what we observed?</p>
+<blockquote>
+<div><p>We made the assumption on the probability of the distribution following the binomial distribution.</p>
+</div></blockquote>
+</div>
+<div class="section" id="bayesian-approach">
+<h3>Bayesian approach<a class="headerlink" href="#bayesian-approach" title="Permalink to this headline">¶</a></h3>
+<p>Let’s assum a prior <span class="math notranslate nohighlight">\(P(loaded)=0.6 \Rightarrow\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+f(\theta|X)=\frac{f(X|\theta) f(\theta)}{\sum f(X|\theta) f(\theta)}= 
+\frac{ \binom{5}{x}\left[(0.5)^5 (0.4) I_{\theta=\textrm{fair}} + (0.7)^x (0.3)^{5-x} (0.6) I_{\theta=\textrm{loaded}} \right] }
+{ \binom{5}{x}\left[(0.5)^5 (0.4) + (0.7)^x (0.3)^{5-x} (0.6) \right]} \Rightarrow
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+f(\theta|X=2)=0.612 I_{\theta=\textrm{fair}} + 0.388 I_{\theta=\textrm{loaded}}
+\]</div>
+<p>Now we can answer to the question:
+<span class="math notranslate nohighlight">\(P(\theta =loaded|X=2)=0.388\)</span></p>
+<p>What happen with different prior?
+<span class="math notranslate nohighlight">\(P(loaded)=0.5 \Rightarrow P(\theta =fair|X=2)=0.297 \)</span>
+<span class="math notranslate nohighlight">\(P(loaded)=0.9 \Rightarrow P(\theta =fair|X=2)=0.792 \)</span></p>
+<p>At this stage of knowledge, we can see that the posteriori is dependent on the priori and there is a subjective knowledge of the priori. But the assumption on the model are clear.  Moreover we can build confidence interval named credible interval.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapt1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Distribution%20Manipulation%20Function%20in%20Python.html" title="previous page">Distribution Manipulation Functions in Python</a>
+    <a class='right-next' id="next-link" href="Bayesian%20Inference.html" title="next page">Bayesian Inference  <a class="anchor" id="guideBayesian"></a></a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

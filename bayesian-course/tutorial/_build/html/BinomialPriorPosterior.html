@@ -1,0 +1,660 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prios and Posterior : The binomial case &#8212; Bayesian Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Analysis Example" href="chapt2/Practical%20Exercise.html" />
+    <link rel="prev" title="Bayesian Inference" href="chapt1/Bayesian%20Inference.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Bayesian Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   <!-- #raw -->
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Statistic Bayesian 001
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Basics%20in%20Statistic%20Bayesian.html">
+   Basics in Statistic Bayesian
+   <a class="anchor" id="chapter1">
+   </a>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prio and Posterior
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Prios and Posterior : The binomial case
+   <a class="anchor" id="chapter binomial prior">
+   </a>
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chapt2/Practical%20Exercise.html">
+     Data Analysis Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="OtherPriorPosterior.html">
+   Other Prior and Posterior models
+   <a class="anchor" id="chapter4">
+   </a>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practice in Adevinta
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Examples%20in%20Adevinta.html">
+   Examples in Adevinta
+   <a class="anchor" id="chapter5">
+   </a>
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/BinomialPriorPosterior.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FBinomialPriorPosterior.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/BinomialPriorPosterior.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/BinomialPriorPosterior.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prior-calibration-predictive-prior-interval">
+   Prior Calibration &amp; Predictive prior interval
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#posterior-predictive-distribution">
+   Posterior predictive distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conjugate-priors">
+   Conjugate Priors
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="prios-and-posterior-the-binomial-case-a-class-anchor-id-chapter-binomial-prior-a">
+<h1>Prios and Posterior : The binomial case <a class="anchor" id="chapter binomial prior"></a><a class="headerlink" href="#prios-and-posterior-the-binomial-case-a-class-anchor-id-chapter-binomial-prior-a" title="Permalink to this headline">¶</a></h1>
+<p>In this Chapter we will understand how the prior and posterior should be built, the consequences of the priors on the posteriors and some hint on the mathematical background.</p>
+<p>This chapter will be focused on the Binomial distribution which will be largely used in many applications, however next chapter will be focused on other distribution that can suit situations not covered by the binomial as much as a general framework to model even more general situation.</p>
+<p>Before to start, let’s review how the choise of the prior will affect the posterior.</p>
+<p>Let’s fix an uniform prior first and let’s see in the next example (taken from the <a class="reference external" href="https://camdavidsonpilon.github.io/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/">first chapter of Bayesian Method for hacker</a> ) how the posterior will change as soon as we collect more data:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="c1"># The code below can be passed over, as it is currently not important, plus it</span>
+<span class="c1"># uses advanced topics we have not covered yet. LOOK AT PICTURE, MICHAEL!</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">IPython.core.pylabtools</span> <span class="k">import</span> <span class="n">figsize</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">figsize</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+
+<span class="n">dist</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span>
+<span class="n">n_trials</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_trials</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># For the already prepared, I&#39;m using Binomial&#39;s conj. prior.</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
+    <span class="n">sx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_trials</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$p$, probability of heads&quot;</span><span class="p">)</span> \
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_trials</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">sx</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">heads</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">heads</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">N</span> <span class="o">-</span> <span class="n">heads</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;observe </span><span class="si">%d</span><span class="s2"> tosses,</span><span class="se">\n</span><span class="s2"> </span><span class="si">%d</span><span class="s2"> heads&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">heads</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#348ABD&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">leg</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">leg</span><span class="o">.</span><span class="n">get_frame</span><span class="p">()</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">autoscale</span><span class="p">(</span><span class="n">tight</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Bayesian updating of posterior probabilities&quot;</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/BinomialPriorPosterior_3_0.png" src="_images/BinomialPriorPosterior_3_0.png" />
+</div>
+</div>
+<p>This is the hearth of Bayesian approach: the more data you collect, the sooner you converge to a final stable posterior. After few observations the initial belief is changed, but adding few observation more will change the global distribution until a more stable and peaked distribution is reached.</p>
+<p>Let’s see what happen if we start from another prior distribution:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="c1"># The code below can be passed over, as it is currently not important, plus it</span>
+<span class="c1"># uses advanced topics we have not covered yet. LOOK AT PICTURE, MICHAEL!</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">IPython.core.pylabtools</span> <span class="k">import</span> <span class="n">figsize</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">figsize</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+
+<span class="n">dist</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span>
+<span class="n">n_trials</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_trials</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># For the already prepared, I&#39;m using Binomial&#39;s conj. prior.</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
+    <span class="n">sx</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">n_trials</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$p$, probability of heads&quot;</span><span class="p">)</span> \
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_trials</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">sx</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">heads</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="n">N</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">11</span> <span class="o">+</span> <span class="n">heads</span><span class="p">,</span> <span class="mi">11</span> <span class="o">+</span> <span class="n">N</span> <span class="o">-</span> <span class="n">heads</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;observe </span><span class="si">%d</span><span class="s2"> tosses,</span><span class="se">\n</span><span class="s2"> </span><span class="si">%d</span><span class="s2"> heads&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">heads</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#348ABD&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">leg</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">leg</span><span class="o">.</span><span class="n">get_frame</span><span class="p">()</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">autoscale</span><span class="p">(</span><span class="n">tight</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Bayesian updating of posterior probabilities&quot;</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/BinomialPriorPosterior_5_0.png" src="_images/BinomialPriorPosterior_5_0.png" />
+</div>
+</div>
+<p>In this case, we started from a different prior closer to the expected ones and again just by collecting more data the shape and dispersion will converge to the final one.</p>
+<p>From this simple example is clear that the choise of prior is important and we need to understan how to build the prior, the posterior and quantify how many data we need to reach a convergence.</p>
+<p><span class="math notranslate nohighlight">\(\textbf{How we choose the prior?}\)</span> We could try a family of prior for example <span class="math notranslate nohighlight">\(P(\theta \leq c)\)</span> for all <span class="math notranslate nohighlight">\(c \in R\)</span> but this is computationally complicated.</p>
+<p>Moreover we will show that when we have a lot of data, a reasonable choose of prior would not affect the posterior. However there are few exceptions that are related to priors that have to be avoided.</p>
+<p>ex. If we choose a prior that is equals to 1 in just one point of all the possible values of the variable like:</p>
+<div class="math notranslate nohighlight">
+\[P(\theta =1/2)=1 \]</div>
+<p>In this case the posterior:</p>
+<div class="math notranslate nohighlight">
+\[f(\theta | y)\varpropto f(y|\theta) f(\theta)= f(\theta) \]</div>
+<p>The choose of the delta prior will project the posterior in that unique point that have a prio different from zero.</p>
+<p>In Bayesian approach, events with prior probability exactly equals to 0 or 1 will have posterior probability exactly equals to 0 or 1. Thus we need to NOT use those Priors.</p>
+<p>A useful concept to select the prios is the following</p>
+<div class="section" id="prior-calibration-predictive-prior-interval">
+<h2>Prior Calibration &amp; Predictive prior interval<a class="headerlink" href="#prior-calibration-predictive-prior-interval" title="Permalink to this headline">¶</a></h2>
+<p>The prior calibration process consists in computing a predictive interval that will contain a <span class="math notranslate nohighlight">\(95\%\)</span> of new cases that will fall there (this is the interval of data <span class="math notranslate nohighlight">\(y\)</span> rather than <span class="math notranslate nohighlight">\(\theta\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[f(y)= \int f(y|\theta) f(\theta) d\theta= \int f(y,\theta) d\theta \]</div>
+<p>Note the last element <span class="math notranslate nohighlight">\(f(y,\theta)\)</span> is the joint probability of <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<p>Remember in the first chapter we recall the joint probability <span class="math notranslate nohighlight">\(\textrm{P(A} \cap \textrm{B)}\)</span> and we saw that
+<span class="math notranslate nohighlight">\(\textrm{P(A|B)} = \frac{\textrm{P(A} \cap \textrm{B)}}{\textrm{P(B)}}\)</span></p>
+<p>Now in term of data analysis we have</p>
+<div class="math notranslate nohighlight">
+\[f(y|\theta)= \frac{f(y,\theta)}{f(\theta)}\]</div>
+<p>Multiplying for <span class="math notranslate nohighlight">\(f(\theta) \Rightarrow\)</span></p>
+<div class="math notranslate nohighlight">
+\[f(y|\theta) f(\theta)= f(y,\theta)\]</div>
+<p>The likelihood (<span class="math notranslate nohighlight">\(f(y|\theta)\)</span>) times the prio (<span class="math notranslate nohighlight">\(f(\theta)\)</span>) is the join distribution for data and parameter.</p>
+<p>The prior predictive interval are useful because they reveal the consequences of the prior at the data level.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The prior predictive interval are useful because they reveal the consequences of the prior at the data level.</p>
+<p>In other words, the prior predictive intervals show the distribution of the data which we think we were going to obtain before we see the data.</p>
+</div>
+<p>Again, the prior predictive distribution is</p>
+<div class="math notranslate nohighlight">
+\[f(y)= \int f(y,\theta) d\theta\]</div>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>We flip a coin 10 times and we count the number of heads. We want the predictive prior distribution: How many heads we predict we are going to see?</p>
+<div class="math notranslate nohighlight">
+\[ X = \textrm{number of head} = \sum_{i=1}^{10} Y_i\]</div>
+<p>where <span class="math notranslate nohighlight">\(Y_i\)</span> is the output of each coin.</p>
+<p>Prior for <span class="math notranslate nohighlight">\(f(\theta) = I_{\{0 \leq \theta \leq 1 \}}\)</span> with the hypothesis that all possible coin are equally likely.</p>
+<p>The predicive distribution of number of heads <span class="math notranslate nohighlight">\(\Rightarrow\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f(X)= \int f(X|\theta) f(\theta) d\theta = \textrm{considering a binomial likelihood}= \int_{0}^{1} \frac{10!}{x!(10-x)!} \theta^x (1-\theta)^{(10-x)} 1 d\theta\]</div>
+<p>To evaluate the integral we need to use the gamma and beta function:</p>
+<div class="math notranslate nohighlight">
+\[ n! =  \Gamma(n+1)\]</div>
+<div class="math notranslate nohighlight">
+\[ z \sim Beta(\alpha,\beta)  \]</div>
+<div class="math notranslate nohighlight">
+\[ f(z) = \frac{\Gamma(\alpha +\beta)}{\Gamma(\alpha)\Gamma(\beta)} z^{\alpha-1} (1-z)^{\beta-1}\]</div>
+<p>So <span class="math notranslate nohighlight">\(\Rightarrow\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+f(x)= \int_{0}^{1} \frac{\Gamma(11)}{\Gamma(x+1)\Gamma(11-x)} \theta^{(x+1)-1} (1-\theta)^{(11-x)-1} d\theta=\\\frac{\Gamma(11)}{\Gamma(12)} \int_{0}^{1} \frac{\Gamma(12)}{\Gamma(x+1)\Gamma(11-x)} \theta^{(x+1)-1} (1-\theta)^{(11-x)-1} d\theta
+\end{aligned}\end{align} \]</div>
+<p>Now note that</p>
+<div class="math notranslate nohighlight">
+\[ \int_{0}^{1} \frac{\Gamma(12)}{\Gamma(x+1)\Gamma(11-x)} \theta^{(x+1)-1} (1-\theta)^{(11-x)-1} d\theta = \textrm{is the integral of the density function} =\int_{0}^{1} f(z) dz = 1\]</div>
+<p>The previous predictive distribution of the number of head is simplified to</p>
+<div class="math notranslate nohighlight">
+\[ f(x)= \frac{\Gamma(11)}{\Gamma(12)} =\frac{11!}{12!}=\frac{1}{11}
+\tag{for $x \in \{0,1,..10\} $}
+\]</div>
+<p>Starting from the uniform prior <span class="math notranslate nohighlight">\(f(\theta) = I_{\{0 \leq \theta \leq 1 \}}\)</span> we end up with a predictive of density for X : all possible values of X are equally likely</p>
+</div>
+</div>
+<div class="section" id="posterior-predictive-distribution">
+<h2>Posterior predictive distribution<a class="headerlink" href="#posterior-predictive-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Given that we saw some data, for example given we saw a first flip, what is the predicted probability distribution for the second flip?</p>
+<div class="math notranslate nohighlight">
+\[f(y_2|y_1) = \int f(y_2|\theta , y_1) f(\theta|y_1) d\theta\]</div>
+<p>Note that as prio distribution now we use the posterior distribution from the previous output <span class="math notranslate nohighlight">\(f(\theta|y_1)\)</span>.
+If <span class="math notranslate nohighlight">\(Y_2 \perp Y_1\)</span> which means if <span class="math notranslate nohighlight">\(Y_2\)</span> is independent from <span class="math notranslate nohighlight">\(Y_1\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\int f(y_2|\theta) f(\theta|y_1) d\theta \]</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>In other word the posterior predictive distribution <span class="math notranslate nohighlight">\(f(y_2|y_1)\)</span> is the distribution of the observation that we would expect for a new experiment given that we have observed the results of our current experiment.</p>
+</div>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>Starting with an uniform distribution for <span class="math notranslate nohighlight">\(\theta\)</span> and we observe in the first flip a head <span class="math notranslate nohighlight">\(Y_1=1\)</span> what we would predict for the second flip?</p>
+<p>This is not going to be uniform distribution anymore like in the first step because we have some data already.</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}f(y_2|y_1=1)=\textrm{from the last example of previous chapter, the posterior of previous step is } 2 \theta= \\\int_{0}^{1} \theta^{y_2} (1-\theta)^{(1-y_2)} 2\theta d\theta = \int_{0}^{1} 2 \theta^{y_2}+1 (1-\theta)^{(1-y_2)} d\theta \Rightarrow\end{aligned}\end{align} \]</div>
+<div class="math notranslate nohighlight">
+\[P(y_2=1|y_1=1)= \int_{0}^{1} 2 \theta^{2} d\theta =\frac{2}{3}\]</div>
+<div class="math notranslate nohighlight">
+\[P(y_2=0|y_1=1)= \int_{0}^{1} 2 \theta (1-\theta)  d\theta =\frac{1}{3}\]</div>
+<p>Since our prior was uniform, it means that our prior was saying that the probability to have 1 head is equal to have 1 tail so we have 2 heads over 2heads + 1 tail</p>
+</div>
+<p><span class="math notranslate nohighlight">\(\textbf{Recap :}\)</span></p>
+<p>In this section we will show that when we use a Uniform prior distribution for a Bernoulli Likelihood we will get a beta posterior. Let’s start with the likelihood:</p>
+<div class="math notranslate nohighlight">
+\[f(y|\theta)= \theta^{\sum y_i} (1-\theta)^{(n-\sum y_i)} \Rightarrow \tag{for $f(\theta)=I_{\{0 \leq \theta \leq 1\}} $} \]</div>
+<p>Let’s build the posterior:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+f(\theta|y)=\frac{f(y|\theta) f(\theta)} {\int f(y|\theta) f(\theta) d\theta}=\frac{\theta^{\sum y_i} (1-\theta)^{(n-\sum y_i)} I_{\{0 \leq \theta \leq 1\}} }{\int \theta^{\sum y_i} (1-\theta)^{(n-\sum y_i)} I_{\{0 \leq \theta \leq 1\}} d\theta} =\\\frac{\theta^{\sum y_i} (1-\theta)^{(n-\sum y_i)} I_{\{0 \leq \theta \leq 1\}} } {\frac{\Gamma(\sum y_i+1) \Gamma(n - \sum y_i+1)}{\Gamma(n+2)}  \int \frac{\Gamma(n+2)}{\Gamma(\sum y_i+1) \Gamma(n - \sum y_i+1)}  \theta^{\sum y_i} (1-\theta)^{(n-\sum y_i)}  d\theta} 
+\end{aligned}\end{align} \]</div>
+<p>Now given that the all integral is the integral of the density beta function:</p>
+<div class="math notranslate nohighlight">
+\[ \int \frac{\Gamma(n+2)}{\Gamma(\sum y_i+1) \Gamma(n - \sum y_i+1)}  \theta^{\sum y_i} (1-\theta)^{(n-\sum y_i)}  d\theta =1\]</div>
+<p>The previous expression is simplified to <span class="math notranslate nohighlight">\(\Rightarrow\)</span></p>
+<div class="math notranslate nohighlight">
+\[ f(\theta|y)= \frac{\Gamma(n+2)}{\Gamma(\sum y_i+1) \Gamma(n - \sum y_i+1)} \theta^{\sum y_i} (1-\theta)^{(n-\sum y_i)} I_{\{0 \leq \theta \leq 1\}} \]</div>
+<p>To conclude it is evident that:</p>
+<div class="math notranslate nohighlight">
+\[f(\theta|y) \sim Beta(\sum y_i+1, n-\sum y_i+1)  \]</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The posterior for a uniform prior distribution coupled with a bernoulli likelihood is a beta distribution with the general expression</p>
+<div class="math notranslate nohighlight">
+\[f(\theta|y) \sim Beta(\sum y_i+1, n-\sum y_i+1)  \]</div>
+</div>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>Example:
+flip a coin with unknown probability of head (<span class="math notranslate nohighlight">\(\theta\)</span>). If we use a Bernoulli likelihood for each coin flip <span class="math notranslate nohighlight">\(f(y_1|\theta)=\theta^i (1-\theta_i)^{(1-y_i)} I_{\{0 \le \theta \leq 1\}}\)</span> and a uniform prior for <span class="math notranslate nohighlight">\(\theta\)</span>, whta is the posterior distribution for <span class="math notranslate nohighlight">\(\theta\)</span> if we observe (H,H,T) where H is head (<span class="math notranslate nohighlight">\(Y=1\)</span>) and T is tail (<span class="math notranslate nohighlight">\(Y=0\)</span>)</p>
+<p>Answer: Beta(3,2)</p>
+</div>
+</div>
+<div class="section" id="conjugate-priors">
+<h2>Conjugate Priors<a class="headerlink" href="#conjugate-priors" title="Permalink to this headline">¶</a></h2>
+<p>We will try to generalize further the previous results.</p>
+<p>From the theory we know that a specific choise of likelihood combined with a family of prior will give a specific family of posterior. Those are called conjugate priors. In the table below an example of conjugate priors:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Likelihood</p></th>
+<th class="head"><p>Prior</p></th>
+<th class="head"><p>Posterior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Binomial</p></td>
+<td><p>Beta</p></td>
+<td><p>Beta</p></td>
+</tr>
+<tr class="row-odd"><td><p>Poisson</p></td>
+<td><p>Gamma</p></td>
+<td><p>Gamma</p></td>
+</tr>
+<tr class="row-even"><td><p>Exponential</p></td>
+<td><p>Gamma</p></td>
+<td><p>Gamma</p></td>
+</tr>
+<tr class="row-odd"><td><p>Normal (mean unknown)</p></td>
+<td><p>Normal</p></td>
+<td><p>Normal</p></td>
+</tr>
+<tr class="row-even"><td><p>Normal (variance unknown)</p></td>
+<td><p>Inverse Gamma</p></td>
+<td><p>Inverse Gamma</p></td>
+</tr>
+<tr class="row-odd"><td><p>Normal (variance and mean unknown)</p></td>
+<td><p>Normal/Gamma</p></td>
+<td><p>Normal/Gamma</p></td>
+</tr>
+</tbody>
+</table>
+<p>In this section we are focused on the Beta prior conjugate with the binomial likelihood. Coming back to our example:</p>
+<p>Let’s remind that the uniform distribution that we have used for the prior distribution so far, is a specif case from the Beta distribution with <span class="math notranslate nohighlight">\(\alpha =\beta=1\)</span> and also that any Beta distribution is conjugate for the Bernoulli distribution. In order word, any Beta prior will give a Beta posterior usign a Bernoulli Likelihood.</p>
+<p>Generalizing:</p>
+<div class="math notranslate nohighlight">
+\[
+f(\theta)= \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha) \Gamma(\beta)} \theta^{(\alpha -1)} (1-\theta)^{(\beta -1)} I_{\{ 0 \leq \theta \leq 1\}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+f(\theta|y)\varpropto f(y|\theta) f(\theta) = \theta^{\sum y_i} (1-\theta)^{(n-\sum y_i)} \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha) \Gamma(\beta)} \theta^{(\alpha -1)} (1-\theta)^{(\beta -1)} I_{\{ 0 \leq \theta \leq 1\}} 
+\varpropto 
+\theta^{(\alpha+\sum y_i -1)} (1-\theta)^{(\beta+n-\sum y_i -1)} I_{\{ 0 \leq \theta \leq 1\}} \Rightarrow 
+\]</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The general expression for the posterior starting from a binomial distribution with a beta prior is:</p>
+<div class="math notranslate nohighlight">
+\[f(\theta| y) \sim Beta(\alpha+\sum y_i, \beta+n-\sum y_i)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha and \beta\)</span> are the parameter for our Beta Prior distribution.</p>
+</div>
+<p><span class="math notranslate nohighlight">\(\textbf{Conjugate Family:}\)</span></p>
+<p>The conjugate family are the family of function that if used as prio in conjuction with a likelihood choise, they give as posterior the same family of function. For example we saw that the Beta function is conjugate with the Bernoulli Likelihood.</p>
+<p>With conjugate family we can get a closed form solution for the posterior and the integral otherwise we end up in integral complicated to be solved. If the family is flexible, you can find a member of that family that closely represent your belief.</p>
+<p>We can thinks at it as a hierarchical model starting with a bernouilli likelihood <span class="math notranslate nohighlight">\(\Rightarrow \)</span></p>
+<div class="math notranslate nohighlight">
+\[y_1,...,y_n \sim B(\theta) \tag{likelihood} \]</div>
+<div class="math notranslate nohighlight">
+\[\Rightarrow \theta \textrm{  prior is a  } Beta(\alpha,\beta) \textrm{   depending on   }\alpha, \beta \]</div>
+<div class="math notranslate nohighlight">
+\[\Rightarrow \alpha,\beta = \alpha_0,\beta_0\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha,\beta\)</span> are hyperparameter that in the simple configuration just have a value while in a more complex problem we can give a prior distribution and extend in this manner the model.</p>
+<p>Again from a prior <span class="math notranslate nohighlight">\(Beta(\alpha,\beta)\)</span> we ended up in a posterior <span class="math notranslate nohighlight">\(Beta(\alpha+\sum y_i, \beta+n-\sum y_i)\)</span> where <span class="math notranslate nohighlight">\(\alpha +\beta\)</span> are called effective sample size of prior. Let’s see why this sum is so important.</p>
+<p>The mean value of the <span class="math notranslate nohighlight">\(Beta\)</span> is <span class="math notranslate nohighlight">\(\frac{\alpha}{\alpha + \beta}\)</span></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The mean value of the posterior is <span class="math notranslate nohighlight">\(\frac{\alpha + \sum y_i}{\alpha + \sum y_i +\beta + n - \sum y_i}=\frac{\alpha + \sum y_i}{\alpha  +\beta + n }= \frac{\alpha + \beta}{\alpha + \beta +n} \frac{\alpha}{\alpha+\beta}+\frac{n}{\alpha + \beta +n} \frac{\sum y_i}{n}\)</span></p>
+</div>
+<p>This last equation is extremely interesting because it tells us that the <span class="math notranslate nohighlight">\(\textbf{posterior mean}\)</span> is equals to the <span class="math notranslate nohighlight">\(\textbf{prior weight}\)</span> X <span class="math notranslate nohighlight">\(\textbf{the prior mean}\)</span> + <span class="math notranslate nohighlight">\(\textbf{the data weight}\)</span> X <span class="math notranslate nohighlight">\(\textbf{data mean}\)</span></p>
+<p>Note actually that the weigth sums to 1 :</p>
+<div class="math notranslate nohighlight">
+\[\frac{\alpha + \beta}{\alpha + \beta +n} + \frac{n}{\alpha + \beta +n}=1\]</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Very important: note that the weight for the prio has n to the denominator only. The weight factor give also an idea of how many data size you need to have to avois that the prior distribution choise overcome on the date in the posterior distribution.</p>
+</div>
+<p>If <span class="math notranslate nohighlight">\(\alpha +\beta \ll n\)</span> the data weight is more important in the posterior than the prior factor.
+If <span class="math notranslate nohighlight">\(\alpha +\beta \gg n\)</span> the posterior will be largely driven by the prior.</p>
+<p>Recall that the <span class="math notranslate nohighlight">\(95\%\)</span> CI for <span class="math notranslate nohighlight">\(\theta\)</span> is <span class="math notranslate nohighlight">\(\theta \pm 1.96 \sqrt{\frac{\theta (1-\theta)}{n}}\)</span>. Using the posterior distribution for Beta we can create a interval of 95<span class="math notranslate nohighlight">\(\%\)</span> of probability that contains <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>An engineer wants to assess the reliability of a new chemical refinement process by measuring <span class="math notranslate nohighlight">\(\theta\)</span>, <span class="math notranslate nohighlight">\(\textbf{the proportion of samples that fail}\)</span> a battery of tests. These tests are expensive, and the budget only allows 20 tests on randomly selected samples. Assuming each test is independent, she assigns a binomial likelihood where X counts the samples which fail. Historically, new processes pass about half of the time, so she assigns a <span class="math notranslate nohighlight">\(Beta(2,2)\)</span> prior for <span class="math notranslate nohighlight">\(\theta\)</span> (prior mean 0.5 and prior sample size 4). The outcome of the tests is 6 fails and 14 passes.</p>
+<p>Aswer to the following questions:</p>
+<ul class="simple">
+<li><p>What is the posterior distribution for <span class="math notranslate nohighlight">\(\theta\)</span>?</p></li>
+</ul>
+<p>(Answer : <span class="math notranslate nohighlight">\(Beta(8,16)\)</span>)</p>
+<ul class="simple">
+<li><p>What is the  the upper end of an equal-tailed 95% credible interval for <span class="math notranslate nohighlight">\(\theta\)</span>?</p></li>
+</ul>
+<p>Answer(0.53 - in python beta.ppf(0.975,8,16) )</p>
+<ul class="simple">
+<li><p>The engineer tells you that the process is considered promising and can proceed to another phase of testing if we are <span class="math notranslate nohighlight">\(90\%\)</span> sure that the failure rate is less than <span class="math notranslate nohighlight">\(.35\)</span>. Calculate the posterior probability <span class="math notranslate nohighlight">\(P(\theta &lt; .35| x)\)</span>. In your role as the statistician, would you say that this new chemical should pass?</p></li>
+</ul>
+<p>Answer: No because <span class="math notranslate nohighlight">\(P(\theta&lt;.35∣x)&lt;0.9\)</span>. (in python: beta.cdf(0.35,8,16)</p>
+<ul class="simple">
+<li><p>It is discovered that the budget will allow five more samples to be tested. These tests are conducted and none of them fail.Calculate the new posterior probability <span class="math notranslate nohighlight">\(P(\theta &lt; .35 | x_1, x_2)\)</span>. In your role as the statistician, would you say that this new chemical should pass (with the same requirement as in the previous question)?</p></li>
+</ul>
+<p>Answer: No, because <span class="math notranslate nohighlight">\(P(θ&lt;.35| x_1, x_2))&lt;0.9\)</span> (in python beta.cdf(0.35,8,21)</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="chapt1/Bayesian%20Inference.html" title="previous page">Bayesian Inference  <a class="anchor" id="guideBayesian"></a></a>
+    <a class='right-next' id="next-link" href="chapt2/Practical%20Exercise.html" title="next page">Data Analysis Example</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "/home/salvo/miniconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/home/salvo/miniconda3/lib/python3.7/site-packages/nbclient/client.py", line 1082, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/salvo/miniconda3/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/salvo/miniconda3/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/salvo/miniconda3/lib/python3.7/asyncio/base_events.py", line 579, in run_until_complete
+    return future.result()
+  File "/home/salvo/miniconda3/lib/python3.7/site-packages/nbclient/client.py", line 536, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/home/salvo/miniconda3/lib/python3.7/site-packages/nbclient/client.py", line 827, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/salvo/miniconda3/lib/python3.7/site-packages/nbclient/client.py", line 735, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Likelihood P(X|θ) for all θ's
+likelihood = stats.binom.pmf(k = np.sum(data_dt['nof_searches_with_clicks']),n = data_dt['nof_searches'],\
+                             p = theta_range)
+# Create the plot
+fig, ax = plt.subplots()
+plt.plot(theta_range, likelihood, linewidth=3, color='green')
+# Add a title
+plt.title('[Likelihood] Probability of CTR' , fontsize=20)
+# Add X and y Label
+plt.xlabel("θ", fontsize=16)
+plt.ylabel("Probability", fontsize=16)
+# Add a grid
+plt.grid(alpha=.4, linestyle='--')
+# Show the plot
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m<ipython-input-8-613409372926>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m# Likelihood P(X|θ) for all θ's[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m likelihood = stats.binom.pmf(k = np.sum(data_dt['nof_searches_with_clicks']),n = data_dt['nof_searches'],\
+[0;32m----> 3[0;31m                              p = theta_range)
+[0m[1;32m      4[0m [0;31m# Create the plot[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0mfig[0m[0;34m,[0m [0max[0m [0;34m=[0m [0mplt[0m[0;34m.[0m[0msubplots[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/miniconda3/lib/python3.7/site-packages/scipy/stats/_distn_infrastructure.py[0m in [0;36mpmf[0;34m(self, k, *args, **kwds)[0m
+[1;32m   2996[0m         [0mcond0[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_argcheck[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2997[0m         [0mcond1[0m [0;34m=[0m [0;34m([0m[0mk[0m [0;34m>=[0m [0m_a[0m[0;34m)[0m [0;34m&[0m [0;34m([0m[0mk[0m [0;34m<=[0m [0m_b[0m[0;34m)[0m [0;34m&[0m [0mself[0m[0;34m.[0m[0m_nonzero[0m[0;34m([0m[0mk[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2998[0;31m         [0mcond[0m [0;34m=[0m [0mcond0[0m [0;34m&[0m [0mcond1[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2999[0m         [0moutput[0m [0;34m=[0m [0mzeros[0m[0;34m([0m[0mshape[0m[0;34m([0m[0mcond[0m[0;34m)[0m[0;34m,[0m [0;34m'd'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   3000[0m         [0mplace[0m[0;34m([0m[0moutput[0m[0;34m,[0m [0;34m([0m[0;36m1[0m[0;34m-[0m[0mcond0[0m[0;34m)[0m [0;34m+[0m [0mnp[0m[0;34m.[0m[0misnan[0m[0;34m([0m[0mk[0m[0;34m)[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mbadvalue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/miniconda3/lib/python3.7/site-packages/pandas/core/series.py[0m in [0;36m__array_ufunc__[0;34m(self, ufunc, method, *inputs, **kwargs)[0m
+[1;32m    885[0m             [0;32mreturn[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    886[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 887[0;31m             [0;32mreturn[0m [0mconstruct_return[0m[0;34m([0m[0mresult[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    888[0m [0;34m[0m[0m
+[1;32m    889[0m     [0;32mdef[0m [0m__array__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0;32mNone[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/miniconda3/lib/python3.7/site-packages/pandas/core/series.py[0m in [0;36mconstruct_return[0;34m(result)[0m
+[1;32m    876[0m                     [0mwarnings[0m[0;34m.[0m[0mwarn[0m[0;34m([0m[0mmsg[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mufunc[0m[0;34m)[0m[0;34m,[0m [0mFutureWarning[0m[0;34m,[0m [0mstacklevel[0m[0;34m=[0m[0;36m3[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    877[0m                 [0;32mreturn[0m [0mresult[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 878[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_constructor[0m[0;34m([0m[0mresult[0m[0;34m,[0m [0mindex[0m[0;34m=[0m[0mindex[0m[0;34m,[0m [0mname[0m[0;34m=[0m[0mname[0m[0;34m,[0m [0mcopy[0m[0;34m=[0m[0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    879[0m [0;34m[0m[0m
+[1;32m    880[0m         [0;32mif[0m [0mtype[0m[0;34m([0m[0mresult[0m[0;34m)[0m [0;32mis[0m [0mtuple[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/miniconda3/lib/python3.7/site-packages/pandas/core/series.py[0m in [0;36m__init__[0;34m(self, data, index, dtype, name, copy, fastpath)[0m
+[1;32m    300[0m                         raise ValueError(
+[1;32m    301[0m                             [0;34m"Length of passed values is {val}, "[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 302[0;31m                             [0;34m"index implies {ind}"[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mval[0m[0;34m=[0m[0mlen[0m[0;34m([0m[0mdata[0m[0;34m)[0m[0;34m,[0m [0mind[0m[0;34m=[0m[0mlen[0m[0;34m([0m[0mindex[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    303[0m                         )
+[1;32m    304[0m                 [0;32mexcept[0m [0mTypeError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mValueError[0m: Length of passed values is 1000, index implies 1
+ValueError: Length of passed values is 1000, index implies 1
+

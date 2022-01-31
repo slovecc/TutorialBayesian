@@ -1,0 +1,26 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+#
+- file: introduction
+- part: Statistic Bayesian 001
+  chapters:
+  - file: Basics in Statistic Bayesian
+    sections:
+        - file: chapt1/Review more common discrete and continuous distributions
+          sections:
+              - file: chapt1/Distribution Manipulation Function in Python
+        - file: chapt1/Review Bayesian Theorem
+        - file: chapt1/Bayesian Inference
+- part: Prio and Posterior
+  chapters:
+  - file: BinomialPriorPosterior
+    sections:
+    - file: chapt2/Practical Exercise
+  - file: OtherPriorPosterior
+- part: Practice in Adevinta
+  chapters:
+  - file: Examples in Adevinta
+    sections:
+       - file: chaptExamples/Example Searches with Clicks
+       - file: chaptExamples/Example Performance of searches per platform
+       - file: chaptExamples/Example Ratings
