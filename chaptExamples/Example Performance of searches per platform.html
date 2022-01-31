@@ -1,0 +1,1295 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uncertainty of unique clicks rate in searches per platforms &#8212; Bayesian Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bayesian approach for the rating model" href="Example%20Ratings.html" />
+    <link rel="prev" title="Uncertainty of unique clicks rate in searches:" href="Example%20Searches%20with%20Clicks.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Bayesian Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction.html">
+   <!-- #raw -->
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Statistic Bayesian 001
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Basics%20in%20Statistic%20Bayesian.html">
+   Basics in Statistic Bayesian
+   <a class="anchor" id="chapter1">
+   </a>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prio and Posterior
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../BinomialPriorPosterior.html">
+   Prios and Posterior : The binomial case
+   <a class="anchor" id="chapter binomial prior">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../OtherPriorPosterior.html">
+   Other Prior and Posterior models
+   <a class="anchor" id="chapter4">
+   </a>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practice in Adevinta
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../Examples%20in%20Adevinta.html">
+   Examples in Adevinta
+   <a class="anchor" id="chapter5">
+   </a>
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="Example%20Searches%20with%20Clicks.html">
+     Uncertainty of unique clicks rate in searches:
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Uncertainty of unique clicks rate in searches per platforms
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Example%20Ratings.html">
+     Bayesian approach for the rating model
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chaptExamples/Example Performance of searches per platform.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FchaptExamples/Example Performance of searches per platform.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chaptExamples/Example Performance of searches per platform.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chaptExamples/Example Performance of searches per platform.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparing-the-dataset">
+   Preparing the dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#we-are-going-to-ompute-the-credible-interval-for-every-day-and-platform-and-plot">
+   We are going to ompute the credible interval for every day and platform and plot
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="uncertainty-of-unique-clicks-rate-in-searches-per-platforms">
+<h1>Uncertainty of unique clicks rate in searches per platforms<a class="headerlink" href="#uncertainty-of-unique-clicks-rate-in-searches-per-platforms" title="Permalink to this headline">¶</a></h1>
+<p>We cand distinguish between AndroidApp and ResponsiveWeb</p>
+<p>We want to compare the performance os the search per different platform.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="preparing-the-dataset">
+<h2>Preparing the dataset<a class="headerlink" href="#preparing-the-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">searches</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../../bayesian-course/datasets-toys/datasets/daily_click_to_rate_per_searches_type.csv&quot;</span><span class="p">)</span>
+<span class="n">searches</span><span class="p">[</span><span class="s1">&#39;uctr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">searches</span><span class="p">[</span><span class="s1">&#39;searches_with_click&#39;</span><span class="p">]</span> <span class="o">/</span><span class="n">searches</span><span class="p">[</span><span class="s1">&#39;searches&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">searches</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>product_type</th>
+      <th>searches_with_click</th>
+      <th>searches</th>
+      <th>uctr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2021-03-20</td>
+      <td>ResponsiveWeb</td>
+      <td>61580</td>
+      <td>245610</td>
+      <td>0.250723</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2021-03-16</td>
+      <td>ResponsiveWeb</td>
+      <td>81100</td>
+      <td>313855</td>
+      <td>0.258400</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2021-03-04</td>
+      <td>ResponsiveWeb</td>
+      <td>79186</td>
+      <td>301383</td>
+      <td>0.262742</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2021-03-28</td>
+      <td>ResponsiveWeb</td>
+      <td>60446</td>
+      <td>240492</td>
+      <td>0.251343</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2021-04-19</td>
+      <td>AndroidApp</td>
+      <td>22212</td>
+      <td>47712</td>
+      <td>0.465543</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>For every day we know:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\theta\)</span> is the probability that one search has one click (this is following a Benoulli(<span class="math notranslate nohighlight">\(\theta\)</span>)</p></li>
+<li><p>Random variable <span class="math notranslate nohighlight">\(X\)</span> which represnets number of searches with clicks during a day follows a binomial distributions <span class="math notranslate nohighlight">\(B(n,\theta)\)</span> where <span class="math notranslate nohighlight">\(n\)</span> is the number of total daily searches and <span class="math notranslate nohighlight">\(\theta\)</span> is the probability that one search has one click . Then, the unique CTR (uctr) is the expected value of this distribution:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+E(X) = \theta = uctr
+\]</div>
+<p>We want to create a model for the daily unique click rate (uctr) using bayesian statistics.</p>
+<p>Bayesian Inference has three steps.</p>
+<p>Step 1. [Prior] Choose a PDF to model your parameter <span class="math notranslate nohighlight">\(\theta\)</span>, aka the prior distribution P(<span class="math notranslate nohighlight">\(\theta\)</span>). This is your best guess about parameters before seeing the data X.</p>
+<p>Step 2. [Likelihood] Choose a PDF for P(X|<span class="math notranslate nohighlight">\(\theta\)</span>). Basically you are modeling how the data X will look like given the parameter <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
+<p>Step 3. [Posterior] Calculate the posterior distribution P(<span class="math notranslate nohighlight">\(\theta\)</span>|X) and pick the <span class="math notranslate nohighlight">\(\theta\)</span> that has the highest P(<span class="math notranslate nohighlight">\(\theta\)</span>|X).
+And the posterior becomes the new prior. Repeat step 3 as you get more data.</p>
+<p>We are going to do the below process per every platform and plot credible intervals over time!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>product_type</th>
+      <th>searches_with_click</th>
+      <th>searches</th>
+      <th>uctr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2021-03-20</td>
+      <td>ResponsiveWeb</td>
+      <td>61580</td>
+      <td>245610</td>
+      <td>0.250723</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2021-03-16</td>
+      <td>ResponsiveWeb</td>
+      <td>81100</td>
+      <td>313855</td>
+      <td>0.258400</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2021-03-04</td>
+      <td>ResponsiveWeb</td>
+      <td>79186</td>
+      <td>301383</td>
+      <td>0.262742</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2021-03-28</td>
+      <td>ResponsiveWeb</td>
+      <td>60446</td>
+      <td>240492</td>
+      <td>0.251343</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2021-04-19</td>
+      <td>AndroidApp</td>
+      <td>22212</td>
+      <td>47712</td>
+      <td>0.465543</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="we-are-going-to-ompute-the-credible-interval-for-every-day-and-platform-and-plot">
+<h2>We are going to ompute the credible interval for every day and platform and plot<a class="headerlink" href="#we-are-going-to-ompute-the-credible-interval-for-every-day-and-platform-and-plot" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">def</span> <span class="nf">credible_intervale</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">platform</span><span class="p">):</span>
+    <span class="n">data_dt</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">dt</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;product_type&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">platform</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">data_dt</span><span class="p">[</span><span class="s1">&#39;searches_with_click&#39;</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">data_dt</span><span class="p">[</span><span class="s1">&#39;searches&#39;</span><span class="p">]</span>
+    <span class="n">cl</span><span class="p">,</span><span class="n">cu</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.025</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">k</span><span class="p">,</span><span class="n">b</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">stats</span><span class="o">.</span><span class="n">beta</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span><span class="n">a</span><span class="o">+</span><span class="n">k</span><span class="p">,</span><span class="n">b</span><span class="o">+</span><span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">cl</span><span class="p">,</span><span class="n">cu</span><span class="p">,</span><span class="n">data_dt</span><span class="p">[</span><span class="s1">&#39;uctr&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">dic_web</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">dt</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]:</span>
+    <span class="n">cl</span><span class="p">,</span><span class="n">cu</span><span class="p">,</span><span class="n">uctr</span> <span class="o">=</span> <span class="n">credible_intervale</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="s2">&quot;ResponsiveWeb&quot;</span><span class="p">)</span>
+    <span class="n">dic_web</span><span class="p">[</span><span class="n">dt</span><span class="p">]</span> <span class="o">=</span> <span class="n">cl</span><span class="p">,</span><span class="n">cu</span><span class="p">,</span><span class="n">uctr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">dic_android</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">dt</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]:</span>
+    <span class="n">cl</span><span class="p">,</span><span class="n">cu</span><span class="p">,</span><span class="n">uctr</span> <span class="o">=</span> <span class="n">credible_intervale</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="s2">&quot;AndroidApp&quot;</span><span class="p">)</span>
+    <span class="n">dic_android</span><span class="p">[</span><span class="n">dt</span><span class="p">]</span> <span class="o">=</span> <span class="n">cl</span><span class="p">,</span><span class="n">cu</span><span class="p">,</span><span class="n">uctr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultWeb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">dic_web</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">resultWeb</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span><span class="s1">&#39;uctr&#39;</span><span class="p">]</span>
+<span class="n">resultWeb</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lower</th>
+      <th>upper</th>
+      <th>uctr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-03-01</th>
+      <td>0.254502</td>
+      <td>0.258264</td>
+      <td>0.256379</td>
+    </tr>
+    <tr>
+      <th>2021-03-02</th>
+      <td>0.260568</td>
+      <td>0.263611</td>
+      <td>0.262086</td>
+    </tr>
+    <tr>
+      <th>2021-03-03</th>
+      <td>0.258571</td>
+      <td>0.261631</td>
+      <td>0.260098</td>
+    </tr>
+    <tr>
+      <th>2021-03-04</th>
+      <td>0.261174</td>
+      <td>0.264316</td>
+      <td>0.262742</td>
+    </tr>
+    <tr>
+      <th>2021-03-05</th>
+      <td>0.257308</td>
+      <td>0.260512</td>
+      <td>0.258907</td>
+    </tr>
+    <tr>
+      <th>2021-03-06</th>
+      <td>0.251458</td>
+      <td>0.254874</td>
+      <td>0.253162</td>
+    </tr>
+    <tr>
+      <th>2021-03-07</th>
+      <td>0.253416</td>
+      <td>0.256799</td>
+      <td>0.255104</td>
+    </tr>
+    <tr>
+      <th>2021-03-08</th>
+      <td>0.258160</td>
+      <td>0.261284</td>
+      <td>0.259719</td>
+    </tr>
+    <tr>
+      <th>2021-03-09</th>
+      <td>0.259979</td>
+      <td>0.263071</td>
+      <td>0.261522</td>
+    </tr>
+    <tr>
+      <th>2021-03-10</th>
+      <td>0.257498</td>
+      <td>0.260605</td>
+      <td>0.259048</td>
+    </tr>
+    <tr>
+      <th>2021-03-11</th>
+      <td>0.259140</td>
+      <td>0.262289</td>
+      <td>0.260711</td>
+    </tr>
+    <tr>
+      <th>2021-03-12</th>
+      <td>0.254668</td>
+      <td>0.257893</td>
+      <td>0.256277</td>
+    </tr>
+    <tr>
+      <th>2021-03-13</th>
+      <td>0.251496</td>
+      <td>0.254904</td>
+      <td>0.253196</td>
+    </tr>
+    <tr>
+      <th>2021-03-14</th>
+      <td>0.248504</td>
+      <td>0.251949</td>
+      <td>0.250222</td>
+    </tr>
+    <tr>
+      <th>2021-03-15</th>
+      <td>0.251937</td>
+      <td>0.255164</td>
+      <td>0.253547</td>
+    </tr>
+    <tr>
+      <th>2021-03-16</th>
+      <td>0.256871</td>
+      <td>0.259934</td>
+      <td>0.258400</td>
+    </tr>
+    <tr>
+      <th>2021-03-17</th>
+      <td>0.257346</td>
+      <td>0.260405</td>
+      <td>0.258872</td>
+    </tr>
+    <tr>
+      <th>2021-03-18</th>
+      <td>0.260165</td>
+      <td>0.263319</td>
+      <td>0.261739</td>
+    </tr>
+    <tr>
+      <th>2021-03-19</th>
+      <td>0.258556</td>
+      <td>0.261806</td>
+      <td>0.260177</td>
+    </tr>
+    <tr>
+      <th>2021-03-20</th>
+      <td>0.249013</td>
+      <td>0.252441</td>
+      <td>0.250723</td>
+    </tr>
+    <tr>
+      <th>2021-03-21</th>
+      <td>0.250366</td>
+      <td>0.253774</td>
+      <td>0.252066</td>
+    </tr>
+    <tr>
+      <th>2021-03-22</th>
+      <td>0.254307</td>
+      <td>0.257372</td>
+      <td>0.255836</td>
+    </tr>
+    <tr>
+      <th>2021-03-23</th>
+      <td>0.254995</td>
+      <td>0.258063</td>
+      <td>0.256526</td>
+    </tr>
+    <tr>
+      <th>2021-03-24</th>
+      <td>0.255013</td>
+      <td>0.258094</td>
+      <td>0.256551</td>
+    </tr>
+    <tr>
+      <th>2021-03-25</th>
+      <td>0.256602</td>
+      <td>0.259777</td>
+      <td>0.258186</td>
+    </tr>
+    <tr>
+      <th>2021-03-26</th>
+      <td>0.255144</td>
+      <td>0.258392</td>
+      <td>0.256765</td>
+    </tr>
+    <tr>
+      <th>2021-03-27</th>
+      <td>0.249774</td>
+      <td>0.253229</td>
+      <td>0.251497</td>
+    </tr>
+    <tr>
+      <th>2021-03-28</th>
+      <td>0.249613</td>
+      <td>0.253081</td>
+      <td>0.251343</td>
+    </tr>
+    <tr>
+      <th>2021-03-29</th>
+      <td>0.255113</td>
+      <td>0.258266</td>
+      <td>0.256686</td>
+    </tr>
+    <tr>
+      <th>2021-03-30</th>
+      <td>0.255546</td>
+      <td>0.258699</td>
+      <td>0.257119</td>
+    </tr>
+    <tr>
+      <th>2021-03-31</th>
+      <td>0.254233</td>
+      <td>0.257501</td>
+      <td>0.255863</td>
+    </tr>
+    <tr>
+      <th>2021-04-01</th>
+      <td>0.251453</td>
+      <td>0.254836</td>
+      <td>0.253141</td>
+    </tr>
+    <tr>
+      <th>2021-04-02</th>
+      <td>0.250585</td>
+      <td>0.254013</td>
+      <td>0.252295</td>
+    </tr>
+    <tr>
+      <th>2021-04-03</th>
+      <td>0.246998</td>
+      <td>0.250462</td>
+      <td>0.248726</td>
+    </tr>
+    <tr>
+      <th>2021-04-04</th>
+      <td>0.249403</td>
+      <td>0.252911</td>
+      <td>0.251153</td>
+    </tr>
+    <tr>
+      <th>2021-04-05</th>
+      <td>0.258901</td>
+      <td>0.262096</td>
+      <td>0.260495</td>
+    </tr>
+    <tr>
+      <th>2021-04-06</th>
+      <td>0.260437</td>
+      <td>0.263585</td>
+      <td>0.262008</td>
+    </tr>
+    <tr>
+      <th>2021-04-07</th>
+      <td>0.261942</td>
+      <td>0.265143</td>
+      <td>0.263539</td>
+    </tr>
+    <tr>
+      <th>2021-04-08</th>
+      <td>0.258917</td>
+      <td>0.262116</td>
+      <td>0.260514</td>
+    </tr>
+    <tr>
+      <th>2021-04-09</th>
+      <td>0.267069</td>
+      <td>0.270491</td>
+      <td>0.268776</td>
+    </tr>
+    <tr>
+      <th>2021-04-10</th>
+      <td>0.285653</td>
+      <td>0.289582</td>
+      <td>0.287614</td>
+    </tr>
+    <tr>
+      <th>2021-04-11</th>
+      <td>0.281190</td>
+      <td>0.285061</td>
+      <td>0.283121</td>
+    </tr>
+    <tr>
+      <th>2021-04-12</th>
+      <td>0.283042</td>
+      <td>0.286461</td>
+      <td>0.284748</td>
+    </tr>
+    <tr>
+      <th>2021-04-13</th>
+      <td>0.269105</td>
+      <td>0.272335</td>
+      <td>0.270716</td>
+    </tr>
+    <tr>
+      <th>2021-04-14</th>
+      <td>0.255710</td>
+      <td>0.258844</td>
+      <td>0.257274</td>
+    </tr>
+    <tr>
+      <th>2021-04-15</th>
+      <td>0.255627</td>
+      <td>0.258806</td>
+      <td>0.257213</td>
+    </tr>
+    <tr>
+      <th>2021-04-16</th>
+      <td>0.251291</td>
+      <td>0.254521</td>
+      <td>0.252902</td>
+    </tr>
+    <tr>
+      <th>2021-04-17</th>
+      <td>0.246744</td>
+      <td>0.250209</td>
+      <td>0.248473</td>
+    </tr>
+    <tr>
+      <th>2021-04-18</th>
+      <td>0.245209</td>
+      <td>0.248632</td>
+      <td>0.246916</td>
+    </tr>
+    <tr>
+      <th>2021-04-19</th>
+      <td>0.262840</td>
+      <td>0.268770</td>
+      <td>0.265794</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resultAnd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">dic_android</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">resultAnd</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span><span class="s1">&#39;upper&#39;</span><span class="p">,</span><span class="s1">&#39;uctr&#39;</span><span class="p">]</span>
+<span class="n">resultAnd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lower</th>
+      <th>upper</th>
+      <th>uctr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-03-01</th>
+      <td>0.537630</td>
+      <td>0.545246</td>
+      <td>0.541440</td>
+    </tr>
+    <tr>
+      <th>2021-03-02</th>
+      <td>0.546614</td>
+      <td>0.552474</td>
+      <td>0.549545</td>
+    </tr>
+    <tr>
+      <th>2021-03-03</th>
+      <td>0.548207</td>
+      <td>0.554073</td>
+      <td>0.551142</td>
+    </tr>
+    <tr>
+      <th>2021-03-04</th>
+      <td>0.546926</td>
+      <td>0.552832</td>
+      <td>0.549881</td>
+    </tr>
+    <tr>
+      <th>2021-03-05</th>
+      <td>0.541109</td>
+      <td>0.547127</td>
+      <td>0.544120</td>
+    </tr>
+    <tr>
+      <th>2021-03-06</th>
+      <td>0.543137</td>
+      <td>0.549293</td>
+      <td>0.546217</td>
+    </tr>
+    <tr>
+      <th>2021-03-07</th>
+      <td>0.545604</td>
+      <td>0.551536</td>
+      <td>0.548572</td>
+    </tr>
+    <tr>
+      <th>2021-03-08</th>
+      <td>0.545509</td>
+      <td>0.551424</td>
+      <td>0.548468</td>
+    </tr>
+    <tr>
+      <th>2021-03-09</th>
+      <td>0.546782</td>
+      <td>0.552701</td>
+      <td>0.549743</td>
+    </tr>
+    <tr>
+      <th>2021-03-10</th>
+      <td>0.546524</td>
+      <td>0.552432</td>
+      <td>0.549480</td>
+    </tr>
+    <tr>
+      <th>2021-03-11</th>
+      <td>0.541273</td>
+      <td>0.547187</td>
+      <td>0.544231</td>
+    </tr>
+    <tr>
+      <th>2021-03-12</th>
+      <td>0.537285</td>
+      <td>0.543303</td>
+      <td>0.540296</td>
+    </tr>
+    <tr>
+      <th>2021-03-13</th>
+      <td>0.538024</td>
+      <td>0.544136</td>
+      <td>0.541081</td>
+    </tr>
+    <tr>
+      <th>2021-03-14</th>
+      <td>0.533430</td>
+      <td>0.539563</td>
+      <td>0.536498</td>
+    </tr>
+    <tr>
+      <th>2021-03-15</th>
+      <td>0.535762</td>
+      <td>0.541584</td>
+      <td>0.538675</td>
+    </tr>
+    <tr>
+      <th>2021-03-16</th>
+      <td>0.540607</td>
+      <td>0.546434</td>
+      <td>0.543522</td>
+    </tr>
+    <tr>
+      <th>2021-03-17</th>
+      <td>0.542390</td>
+      <td>0.548368</td>
+      <td>0.545380</td>
+    </tr>
+    <tr>
+      <th>2021-03-18</th>
+      <td>0.544270</td>
+      <td>0.550305</td>
+      <td>0.547289</td>
+    </tr>
+    <tr>
+      <th>2021-03-19</th>
+      <td>0.540448</td>
+      <td>0.546650</td>
+      <td>0.543551</td>
+    </tr>
+    <tr>
+      <th>2021-03-20</th>
+      <td>0.542392</td>
+      <td>0.548722</td>
+      <td>0.545559</td>
+    </tr>
+    <tr>
+      <th>2021-03-21</th>
+      <td>0.544377</td>
+      <td>0.550591</td>
+      <td>0.547486</td>
+    </tr>
+    <tr>
+      <th>2021-03-22</th>
+      <td>0.548797</td>
+      <td>0.554769</td>
+      <td>0.551785</td>
+    </tr>
+    <tr>
+      <th>2021-03-23</th>
+      <td>0.543579</td>
+      <td>0.549620</td>
+      <td>0.546601</td>
+    </tr>
+    <tr>
+      <th>2021-03-24</th>
+      <td>0.542930</td>
+      <td>0.548905</td>
+      <td>0.545919</td>
+    </tr>
+    <tr>
+      <th>2021-03-25</th>
+      <td>0.544417</td>
+      <td>0.550479</td>
+      <td>0.547450</td>
+    </tr>
+    <tr>
+      <th>2021-03-26</th>
+      <td>0.536889</td>
+      <td>0.543044</td>
+      <td>0.539968</td>
+    </tr>
+    <tr>
+      <th>2021-03-27</th>
+      <td>0.539914</td>
+      <td>0.546211</td>
+      <td>0.543064</td>
+    </tr>
+    <tr>
+      <th>2021-03-28</th>
+      <td>0.543528</td>
+      <td>0.549730</td>
+      <td>0.546631</td>
+    </tr>
+    <tr>
+      <th>2021-03-29</th>
+      <td>0.544520</td>
+      <td>0.550536</td>
+      <td>0.547530</td>
+    </tr>
+    <tr>
+      <th>2021-03-30</th>
+      <td>0.542072</td>
+      <td>0.548084</td>
+      <td>0.545079</td>
+    </tr>
+    <tr>
+      <th>2021-03-31</th>
+      <td>0.543423</td>
+      <td>0.549631</td>
+      <td>0.546529</td>
+    </tr>
+    <tr>
+      <th>2021-04-01</th>
+      <td>0.542533</td>
+      <td>0.548741</td>
+      <td>0.545639</td>
+    </tr>
+    <tr>
+      <th>2021-04-02</th>
+      <td>0.543386</td>
+      <td>0.549549</td>
+      <td>0.546469</td>
+    </tr>
+    <tr>
+      <th>2021-04-03</th>
+      <td>0.542401</td>
+      <td>0.548644</td>
+      <td>0.545524</td>
+    </tr>
+    <tr>
+      <th>2021-04-04</th>
+      <td>0.544196</td>
+      <td>0.550469</td>
+      <td>0.547335</td>
+    </tr>
+    <tr>
+      <th>2021-04-05</th>
+      <td>0.548666</td>
+      <td>0.554745</td>
+      <td>0.551708</td>
+    </tr>
+    <tr>
+      <th>2021-04-06</th>
+      <td>0.545219</td>
+      <td>0.551227</td>
+      <td>0.548225</td>
+    </tr>
+    <tr>
+      <th>2021-04-07</th>
+      <td>0.522775</td>
+      <td>0.528579</td>
+      <td>0.525678</td>
+    </tr>
+    <tr>
+      <th>2021-04-08</th>
+      <td>0.523812</td>
+      <td>0.529721</td>
+      <td>0.526767</td>
+    </tr>
+    <tr>
+      <th>2021-04-09</th>
+      <td>0.522780</td>
+      <td>0.528834</td>
+      <td>0.525808</td>
+    </tr>
+    <tr>
+      <th>2021-04-10</th>
+      <td>0.523264</td>
+      <td>0.529411</td>
+      <td>0.526338</td>
+    </tr>
+    <tr>
+      <th>2021-04-11</th>
+      <td>0.527532</td>
+      <td>0.533582</td>
+      <td>0.530558</td>
+    </tr>
+    <tr>
+      <th>2021-04-12</th>
+      <td>0.526205</td>
+      <td>0.532089</td>
+      <td>0.529148</td>
+    </tr>
+    <tr>
+      <th>2021-04-13</th>
+      <td>0.530681</td>
+      <td>0.536527</td>
+      <td>0.533605</td>
+    </tr>
+    <tr>
+      <th>2021-04-14</th>
+      <td>0.531326</td>
+      <td>0.537268</td>
+      <td>0.534298</td>
+    </tr>
+    <tr>
+      <th>2021-04-15</th>
+      <td>0.519975</td>
+      <td>0.525832</td>
+      <td>0.522904</td>
+    </tr>
+    <tr>
+      <th>2021-04-16</th>
+      <td>0.511187</td>
+      <td>0.517124</td>
+      <td>0.514156</td>
+    </tr>
+    <tr>
+      <th>2021-04-17</th>
+      <td>0.481953</td>
+      <td>0.487729</td>
+      <td>0.484840</td>
+    </tr>
+    <tr>
+      <th>2021-04-18</th>
+      <td>0.464867</td>
+      <td>0.470345</td>
+      <td>0.467605</td>
+    </tr>
+    <tr>
+      <th>2021-04-19</th>
+      <td>0.461070</td>
+      <td>0.470022</td>
+      <td>0.465543</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">resultWeb</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">resultWeb</span><span class="p">[</span><span class="s1">&#39;uctr&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">lower</span><span class="p">,</span><span class="n">upper</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">resultWeb</span><span class="p">[</span><span class="s1">&#39;lower&#39;</span><span class="p">],</span><span class="n">resultWeb</span><span class="p">[</span><span class="s1">&#39;upper&#39;</span><span class="p">],</span><span class="nb">range</span><span class="p">(</span><span class="n">resultWeb</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">lower</span><span class="p">,</span><span class="n">upper</span><span class="p">),</span><span class="s1">&#39;r_-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">resultWeb</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">list</span><span class="p">(</span><span class="n">resultWeb</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Uncertainty of the UCTR in ResponsiveWeb </span><span class="se">\n</span><span class="s1"> (credible intervals)&#39;</span> <span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="c1"># Add X and y Label</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_majorticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=-</span><span class="mi">45</span> <span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Example Performance of searches per platform_15_0.png" src="../_images/Example Performance of searches per platform_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">resultAnd</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">resultAnd</span><span class="p">[</span><span class="s1">&#39;uctr&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">lower</span><span class="p">,</span><span class="n">upper</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">resultAnd</span><span class="p">[</span><span class="s1">&#39;lower&#39;</span><span class="p">],</span><span class="n">resultAnd</span><span class="p">[</span><span class="s1">&#39;upper&#39;</span><span class="p">],</span><span class="nb">range</span><span class="p">(</span><span class="n">resultAnd</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">lower</span><span class="p">,</span><span class="n">upper</span><span class="p">),</span><span class="s1">&#39;g_-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">resultAnd</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">list</span><span class="p">(</span><span class="n">resultAnd</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Uncertainty of the UCTR over time </span><span class="se">\n</span><span class="s1"> (credible intervals)&#39;</span> <span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_majorticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=-</span><span class="mi">45</span> <span class="p">)</span> 
+<span class="c1"># Add X and y Label</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Example Performance of searches per platform_16_0.png" src="../_images/Example Performance of searches per platform_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">resultWeb</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">resultWeb</span><span class="p">[</span><span class="s1">&#39;uctr&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">lower</span><span class="p">,</span><span class="n">upper</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">resultWeb</span><span class="p">[</span><span class="s1">&#39;lower&#39;</span><span class="p">],</span><span class="n">resultWeb</span><span class="p">[</span><span class="s1">&#39;upper&#39;</span><span class="p">],</span><span class="nb">range</span><span class="p">(</span><span class="n">resultWeb</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">lower</span><span class="p">,</span><span class="n">upper</span><span class="p">),</span><span class="s1">&#39;r_-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">resultWeb</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">list</span><span class="p">(</span><span class="n">resultWeb</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">resultAnd</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">resultAnd</span><span class="p">[</span><span class="s1">&#39;uctr&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">lower</span><span class="p">,</span><span class="n">upper</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">resultAnd</span><span class="p">[</span><span class="s1">&#39;lower&#39;</span><span class="p">],</span><span class="n">resultAnd</span><span class="p">[</span><span class="s1">&#39;upper&#39;</span><span class="p">],</span><span class="nb">range</span><span class="p">(</span><span class="n">resultAnd</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">lower</span><span class="p">,</span><span class="n">upper</span><span class="p">),</span><span class="s1">&#39;g_-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">resultAnd</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="nb">list</span><span class="p">(</span><span class="n">resultAnd</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Click to rate over time per platform comparison&#39;</span> <span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_majorticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=-</span><span class="mi">45</span> <span class="p">)</span> 
+<span class="c1"># Add X and y Label</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Example Performance of searches per platform_17_0.png" src="../_images/Example Performance of searches per platform_17_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chaptExamples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Example%20Searches%20with%20Clicks.html" title="previous page">Uncertainty of unique clicks rate in searches:</a>
+    <a class='right-next' id="next-link" href="Example%20Ratings.html" title="next page">Bayesian approach for the rating model</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Other Prior and Posterior models &#8212; Bayesian Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples in Adevinta" href="Examples%20in%20Adevinta.html" />
+    <link rel="prev" title="Data Analysis Example" href="chapt2/Practical%20Exercise.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Bayesian Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   <!-- #raw -->
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Statistic Bayesian 001
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Basics%20in%20Statistic%20Bayesian.html">
+   Basics in Statistic Bayesian
+   <a class="anchor" id="chapter1">
+   </a>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Prio and Posterior
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="BinomialPriorPosterior.html">
+   Prios and Posterior : The binomial case
+   <a class="anchor" id="chapter binomial prior">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Other Prior and Posterior models
+   <a class="anchor" id="chapter4">
+   </a>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Practice in Adevinta
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Examples%20in%20Adevinta.html">
+   Examples in Adevinta
+   <a class="anchor" id="chapter5">
+   </a>
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/OtherPriorPosterior.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FOtherPriorPosterior.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/OtherPriorPosterior.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/OtherPriorPosterior.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#poisson-data">
+   Poisson Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exponential-data">
+   Exponential data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normal-data">
+   Normal data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#known-standard-deviation-unknown-mean">
+     known standard deviation, unknown mean
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternative-priors">
+   Alternative priors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-informative-priors">
+     Non-informative priors
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="other-prior-and-posterior-models-a-class-anchor-id-chapter4-a">
+<h1>Other Prior and Posterior models  <a class="anchor" id="chapter4"></a><a class="headerlink" href="#other-prior-and-posterior-models-a-class-anchor-id-chapter4-a" title="Permalink to this headline">¶</a></h1>
+<p>In the previous chapter, we introduced the concept of conjugate family and we saw an example of conjugate distribution: the Beta Prior conjugate with binomial give a Beta Posterior.</p>
+<p>In this section we are introducing other conjugate families. We already saw a summary of the conjugate priors families and we go through some of those in this chapter:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Likelihood</p></th>
+<th class="head"><p>Prior</p></th>
+<th class="head"><p>Posterior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Binomial</p></td>
+<td><p>Beta</p></td>
+<td><p>Beta</p></td>
+</tr>
+<tr class="row-odd"><td><p>Poisson</p></td>
+<td><p>Gamma</p></td>
+<td><p>Gamma</p></td>
+</tr>
+<tr class="row-even"><td><p>Exponential</p></td>
+<td><p>Gamma</p></td>
+<td><p>Gamma</p></td>
+</tr>
+<tr class="row-odd"><td><p>Normal (mean unknown)</p></td>
+<td><p>Normal</p></td>
+<td><p>Normal</p></td>
+</tr>
+<tr class="row-even"><td><p>Normal (variance unknown)</p></td>
+<td><p>Inverse Gamma</p></td>
+<td><p>Inverse Gamma</p></td>
+</tr>
+<tr class="row-odd"><td><p>Normal (variance and mean unknown)</p></td>
+<td><p>Normal/Gamma</p></td>
+<td><p>Normal/Gamma</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="poisson-data">
+<h2>Poisson Data<a class="headerlink" href="#poisson-data" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-example-chips-into-cookies admonition">
+<p class="admonition-title">Example : chips into cookies</p>
+<p>The distribution of chips inside each cookies can be approximated to a Poisson distribution.
+<span class="math notranslate nohighlight">\(Y_i \sim \textrm{Poiss}(\lambda)\)</span>.
+Typically the Poisson distribution is used to count data unrestricted (for example number of goals in a match).</p>
+<p>The Likelihood distribution for poisson would be:</p>
+<div class="math notranslate nohighlight">
+\[f(y|\lambda)= \frac{\lambda^{\sum y_i} e^{-n \lambda}}{\prod_{i=1}^{n} y_i!} \tag{for $\lambda$ &gt;0}\]</div>
+<p>Now the question is : what prio can we use? A convenient choise would be a conjunte function. Which distribution looks like to an exponential to the power of minus a function? That is the Gamma distribution again.</p>
+</div>
+<p>Gamma prior <span class="math notranslate nohighlight">\(\lambda \sim \Gamma(\alpha,\beta) \Rightarrow\)</span></p>
+<div class="math notranslate nohighlight">
+\[f(\lambda)=\frac{\beta^\alpha}{\Gamma(\alpha)} \lambda^{\alpha-1} e^{- \beta \lambda}\Rightarrow \]</div>
+<p>the posterior will looks like</p>
+<div class="math notranslate nohighlight">
+\[ 
+f(\lambda|y) \varpropto f(y|\lambda) f(\lambda) \varpropto \lambda^{\sum y_i} e^{-n \lambda} \lambda^{\alpha -1} e^{-\beta \lambda} \varpropto \lambda^{(\alpha +\sum y_i)-1} e^{-(\beta +n)\lambda}
+\]</div>
+<p>the posterior is <span class="math notranslate nohighlight">\(\Gamma(\alpha+\sum y_i, \beta +n)\)</span></p>
+<p>with the mead of <span class="math notranslate nohighlight">\(\Gamma\)</span>=<span class="math notranslate nohighlight">\(\frac{\alpha}{\beta}\)</span></p>
+<p>The posterior mean is</p>
+<div class="math notranslate nohighlight">
+\[\frac{\alpha+\sum y_i}{\beta +n} = \frac{\beta}{\beta +n}\frac{\alpha}{\beta}+\frac{n}{\beta +n}\frac{\sum y_i}{n}\]</div>
+<p>we recognize the first and third term as the weigth that sums to 1 and the second and third element as the prior mean and the data mean.
+The effective sample size here is <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<p>The question now is : How we choose <span class="math notranslate nohighlight">\(\beta, \alpha\)</span>?</p>
+<p>Coming back to the example of chips into the cookies: we may have some ideas for the prios. Which stragegy do we use to put information in, then collect data and update it to get the posterior?</p>
+<p>We can opt on two strategies:</p>
+<p><span class="math notranslate nohighlight">\(\textbf{first strategy to choose the prior poisson distribution}\)</span></p>
+<p>Include our belief and knowledge on our prior. We need to find two paremeter <span class="math notranslate nohighlight">\(\alpha,\beta\)</span> so we need to specify at least two equation.</p>
+<p>First can be the prior mean (<span class="math notranslate nohighlight">\(=\frac{\alpha}{\beta}\)</span>) : what is our belief on the mean number of chips for cookies</p>
+<p>Second what is a reasonable prior standard deviation for this mean: for example if we estimate that the prior mean is to have 12 chips for cookies, do we think we have a standard deviation of 3,4,6? How sure are we? Remember standard dev = <span class="math notranslate nohighlight">\(\frac{\sqrt{\alpha}}{\beta}\)</span></p>
+<p>Given the previous two info, we can solve to obtain <span class="math notranslate nohighlight">\(\alpha,\beta\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\textbf{second strategy to choose the prior poisson distribution}\)</span></p>
+<p>We express our ignorance with the vague prior: a flat distribution across much of the space parameter.</p>
+<p>Ex. Given a small <span class="math notranslate nohighlight">\(\epsilon \Rightarrow \Gamma(\epsilon, \epsilon)\)</span>. The mean here is <span class="math notranslate nohighlight">\(\epsilon / \epsilon =1\)</span> and the standard deviation is <span class="math notranslate nohighlight">\(\frac{\sqrt{\epsilon}}{\epsilon}=\frac{1}{\sqrt{\epsilon}} \Rightarrow \)</span>
+if <span class="math notranslate nohighlight">\(\epsilon\)</span> is small, the standard deviation will be large and so we have a very diffuse prior across the space.</p>
+<p>The mean posterior under this prior will be <span class="math notranslate nohighlight">\( \frac{\epsilon +\sum y_i}{\epsilon +n} \approx \frac{\sum y_i}{ n} \)</span> since <span class="math notranslate nohighlight">\(\epsilon\)</span> is small. This shows that the posterior will be strictly driven by the data.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>A retailer notices that a certain type of customer tends to call their customer service hotline more often than other customers, so they begin keeping track. They decide a Poisson process model is appropriate for counting calls, with calling rate <span class="math notranslate nohighlight">\(\theta\)</span> calls per customer per day.</p>
+<p>The model for the total number of calls is then</p>
+<div class="math notranslate nohighlight">
+\[Y \sim \text{Poisson}(n\cdot t \cdot \theta)\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of customers in the group and <span class="math notranslate nohighlight">\(t\)</span> is the number of days. That is, if we observe the calls from a group with 24 customers for 5 days, the expected number of calls would be <span class="math notranslate nohighlight">\(24\cdot 5\cdot \theta = 120\cdot \theta\)</span>.</p>
+<p>The likelihood for Y is then <span class="math notranslate nohighlight">\(f(y \mid \theta) = \frac{(nt\theta)^y e^{-nt\theta}}{y!} \propto (\theta)^y e^{-nt\theta}\)</span>.</p>
+<p>This model also has a conjugate gamma prior <span class="math notranslate nohighlight">\(\theta \sim \text{Gamma}(a, b)\)</span>  which has density (PDF) <span class="math notranslate nohighlight">\(f(\theta) = \frac{b^a}{\Gamma(a)} \theta^{a-1} e^{-b\theta} \propto \theta^{a-1} e^{-b\theta}\)</span></p>
+<p>Following the same procedure of the previous paragraph, it can be shown that the posterior distribution for <span class="math notranslate nohighlight">\(\theta\)</span> is <span class="math notranslate nohighlight">\(\Gamma(a+y,b+nt)\)</span></p>
+</div>
+</div>
+<div class="section" id="exponential-data">
+<h2>Exponential data<a class="headerlink" href="#exponential-data" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>A bus pass every 10 minute. The waiting time (Y) for the next bus is an exponential distribution
+<span class="math notranslate nohighlight">\(Y \sim exp(\lambda)\)</span>.
+The expectation value for <span class="math notranslate nohighlight">\(Y\)</span> is <span class="math notranslate nohighlight">\(1/\lambda\)</span>.</p>
+<p>The gamma distribution is a conjugate distribution for the exponential likelihood.</p>
+<p>We need to specify a prio for our distribution so a specific value for <span class="math notranslate nohighlight">\(\Gamma\)</span>. If we expect the bus coming every 10 minutes, that is a rate of 1 over 10 <span class="math notranslate nohighlight">\(\Rightarrow\)</span> Prior mean<span class="math notranslate nohighlight">\(=(\frac{\alpha}{\beta}\)</span>) =1/10.</p>
+<p>We need to specify the variabilty also: Remember standard dev = <span class="math notranslate nohighlight">\(\frac{\sqrt{\alpha}}{\beta}\)</span></p>
+<p>For example: <span class="math notranslate nohighlight">\(\Gamma(100,1000)\)</span> will have a mean of <span class="math notranslate nohighlight">\(1/10\)</span> and a standard deviation of <span class="math notranslate nohighlight">\(1/100\)</span>. If we are thinking to the mean plus 2 standard deviation, the current distribution is between <span class="math notranslate nohighlight">\(0.1 \pm 0.02\)</span>.</p>
+<p>Now suppose you waited 12 min (<span class="math notranslate nohighlight">\(Y=12\)</span>) and the bus arrive. You want to update the posterior for <span class="math notranslate nohighlight">\(\lambda\)</span> for how often the bus arrives:</p>
+<div class="math notranslate nohighlight">
+\[f(\lambda|y) \sim f(y|\lambda) f(y) \sim \lambda e^{- \lambda y} \lambda^{\alpha -1} e^{- \beta \lambda} = \lambda^{(\alpha -1)+1} e^{-(\beta + y)\lambda}\]</div>
+<div class="math notranslate nohighlight">
+\[\lambda|y \sim \Gamma(\alpha+1,\beta+y) \]</div>
+<p>Including our values for our example : <span class="math notranslate nohighlight">\(\lambda|y \sim \Gamma(101,1012) \)</span></p>
+<p>Thus the posterior mean is <span class="math notranslate nohighlight">\(101/1012=0.0998=1/10.02\)</span>.
+Just one observation does not change a lot our prior belief and the shift in the posterior is negligible.</p>
+<p>Note that in the case of the exponential-gamma model, the sample size is given by <span class="math notranslate nohighlight">\(\alpha\)</span> ( and not <span class="math notranslate nohighlight">\(\beta\)</span> like in the poisson-gamma model)</p>
+</div>
+</div>
+<div class="section" id="normal-data">
+<h2>Normal data<a class="headerlink" href="#normal-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="known-standard-deviation-unknown-mean">
+<h3>known standard deviation, unknown mean<a class="headerlink" href="#known-standard-deviation-unknown-mean" title="Permalink to this headline">¶</a></h3>
+<p>For now, let’s suppose the standard deviation is known and we are interested in the mean (this often happens in the manufactoring industry)</p>
+<div class="math notranslate nohighlight">
+\[X_i \sim N(\mu,\sigma_0^2) \]</div>
+<p>How we can choose the prior for the mean unknown paramater? It turns out that the Normal is conjugate with himself for the mean so we will specify a normal distribution for the prior of the mean</p>
+<div class="math notranslate nohighlight">
+\[\mu \sim N(m_0,s_0^2 )\]</div>
+<p>The posterior will be: <span class="math notranslate nohighlight">\(f(\mu|x)=f(x|\mu)f(\mu)\)</span></p>
+<p>After some calculation it is obtained that</p>
+<div class="math notranslate nohighlight">
+\[f(\mu|x)=N \left(   \frac{\frac{n \bar{x}}{\sigma_0^2}+ \frac{m_0}{s_0^2}}{\frac{n}{\sigma_0^2}+\frac{1}{s_0^2}},\frac{1}{\frac{n}{\sigma_0^2}+\frac{1}{s_0^2}} \right) \]</div>
+<p>We can rewrite the posterior mean as</p>
+<div class="math notranslate nohighlight">
+\[\frac{n}{n+ \frac{\sigma_0^2}{s_0^2}} \bar{x} + \frac{\frac{\sigma_0^2}{s_0^2}}{n+ \frac{\sigma_0^2}{s_0^2}} m \]</div>
+<p>We can see that the posterior mean is a weighted sum of the data mean (<span class="math notranslate nohighlight">\(\bar{x}\)</span>) and the prior mean (<span class="math notranslate nohighlight">\(m\)</span>).</p>
+<p>The effective sample size is <span class="math notranslate nohighlight">\(\frac{\sigma_0^2}{s_0^2}\)</span> (the ratio of the variance of the data <span class="math notranslate nohighlight">\(\sigma_0\)</span> and the variance of the prior <span class="math notranslate nohighlight">\(s_0\)</span>)</p>
+<p>We can also consider the case in which both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are unknown. In this case you can specify a prior for <span class="math notranslate nohighlight">\(\mu\)</span> given <span class="math notranslate nohighlight">\(\sigma\)</span> following the normal distribution and a prior for <span class="math notranslate nohighlight">\(\sigma\)</span> following a <span class="math notranslate nohighlight">\(\Gamma\)</span> distribution. If we marginalize by integrating out the <span class="math notranslate nohighlight">\(\sigma\)</span>, it can be obtained that the posterior for <span class="math notranslate nohighlight">\(\mu \mid x\)</span> follows a t distribution. This approach can be extended to the multivariate normal cases.</p>
+</div>
+</div>
+<div class="section" id="alternative-priors">
+<h2>Alternative priors<a class="headerlink" href="#alternative-priors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="non-informative-priors">
+<h3>Non-informative priors<a class="headerlink" href="#non-informative-priors" title="Permalink to this headline">¶</a></h3>
+<p>These priors are built based on our ignorance about the prior and with the scope to give the maximum wieght on the posterior based on the data observations.</p>
+<p>Coming back to the coin example : <span class="math notranslate nohighlight">\(Y_i \sim B(\theta)\)</span>. How we minimize our prior information for <span class="math notranslate nohighlight">\(\theta\)</span>?</p>
+<p>Intuitively we can say that all the values of <span class="math notranslate nohighlight">\(\theta\)</span> are equally likely :
+<span class="math notranslate nohighlight">\(\theta = U[0,1] =\textrm{Beta}(1,1) \)</span>.</p>
+<p>Remember that the effective sample size of the Beta prior is the sum of the two parameters, in the case of the uniform distribution, it is equal to 2, this is equivalent to data with one head and one tail already in it. So this is not a complete non informative priors. We can think to an even leff informative prior:</p>
+<p><span class="math notranslate nohighlight">\(\textrm{Beta}(1/2,1/2)\)</span> so the the effective sample size is 1 or even go to a effective sample size close to 0 with a  prior distribution like <span class="math notranslate nohighlight">\(\textrm{Beta}(0.001,0.001)\)</span> . In this case all will be driven by the data.</p>
+<p>The limit case would be <span class="math notranslate nohighlight">\(\textrm{Beta}(0.,0.) \Rightarrow f(\theta) \propto \theta^{-1} (1-\theta)^{-1}\)</span>
+The last one is not a proper density, the ingral does not give 1 : this is called as <span class="math notranslate nohighlight">\(\textbf{improper prior}\)</span>.</p>
+<p>However we can use it and we would obtain <span class="math notranslate nohighlight">\(f(y \mid \theta) \propto \theta^{y-1} (1- \theta)^{n-y-1} \sim \textrm{Beta}(y,n-y)\)</span>. The posterior mean is <span class="math notranslate nohighlight">\(y/n\)</span> that we recognize as <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> the maximum likelihood for the binomial.</p>
+<p>So that by using an improper prior we got a posterior which gives us a point estimates equals to the frequentist approach which by constrution depend completely from the data. But now, with respect to the frequentist approach, we can go further and build a posterior and a 95<span class="math notranslate nohighlight">\(\%\)</span> confidence interval that our <span class="math notranslate nohighlight">\(\theta\)</span> will fall there.</p>
+<p>As another example of improper priors: let’s take the normal distribution with known <span class="math notranslate nohighlight">\(\sigma\)</span> and unknown <span class="math notranslate nohighlight">\(\mu\)</span>. <span class="math notranslate nohighlight">\(Y_i \sim N(\mu,\sigma^2)\)</span> and an improper normal distribution can be something like <span class="math notranslate nohighlight">\(N(0,100000^2)\)</span> a distribution with spread variance, in the limit <span class="math notranslate nohighlight">\(\sigma\)</span> which tends to <span class="math notranslate nohighlight">\(\infty\)</span>, <span class="math notranslate nohighlight">\(f(\mu) \sim 1\)</span>. In this case</p>
+<div class="math notranslate nohighlight">
+\[f(\mu \mid y) = f(y \mid \mu) f(\mu)= exp \left[-\frac{1}{2 \sigma^2} \sum (y_i-\mu)^2 \right] (1) \propto  exp \left[-\frac{1}{2 \sigma^2 /n}  (\mu - \bar{y})^2 \right] \propto N(\bar{y}, \sigma^2/n)   \]</div>
+<p>which can be recognized as the likellihood of the normal distribution. Again, even if in this case with improper prior we ended up with the result of the frequentistic approach, the advantage here is that we can build a posterior and a confidence interval for the parameters.</p>
+<p>If we want to choose an uniform prior, there are different way to define an uniform prior. For example a uniform prior for the <span class="math notranslate nohighlight">\(\sigma\)</span> of the normal distribution, can be <span class="math notranslate nohighlight">\(f(\sigma^2)=1/\sigma^2\)</span> or <span class="math notranslate nohighlight">\(f(\sigma^2)=1\)</span> both are uniform in certain scale and using certain parametrization. Using different uniform prior we will get different posteriors.</p>
+<p>The key concept is that uniform priors are not invariant with respect to trasformation. A way to overpass this limitation is by using the <span class="math notranslate nohighlight">\(\textbf{Jeffreys Priors}\)</span> which use <span class="math notranslate nohighlight">\(f(\theta) \propto \sqrt{I(\theta)}\)</span> where <span class="math notranslate nohighlight">\(I(\theta)\)</span> is the Fisher distribution.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="chapt2/Practical%20Exercise.html" title="previous page">Data Analysis Example</a>
+    <a class='right-next' id="next-link" href="Examples%20in%20Adevinta.html" title="next page">Examples in Adevinta  <a class="anchor" id="chapter5"></a></a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book Community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
