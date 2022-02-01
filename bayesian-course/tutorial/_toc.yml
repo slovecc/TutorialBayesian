@@ -17,9 +17,9 @@
     sections:
     - file: chapt2/Practical Exercise
   - file: OtherPriorPosterior
-- part: Practice in Adevinta
+- part: Practice in ecommerce
   chapters:
-  - file: Examples in Adevinta
+  - file: Examples for ecommerce
     sections:
        - file: chaptExamples/Example Searches with Clicks
        - file: chaptExamples/Example Performance of searches per platform
